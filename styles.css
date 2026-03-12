@@ -1,23 +1,23 @@
 :root {
   --bg: #06080d;
   --bg-soft: #0b0f16;
-  --panel: rgba(255, 255, 255, 0.055);
-  --panel-strong: rgba(255, 255, 255, 0.09);
+  --panel: rgba(255, 255, 255, 0.05);
+  --panel-strong: rgba(255, 255, 255, 0.085);
   --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.12);
   --text: #f5f6f8;
-  --text-soft: rgba(245, 246, 248, 0.78);
-  --text-muted: rgba(245, 246, 248, 0.54);
-  --accent: #d3b27b;
-  --accent-2: #f3e3c6;
-  --accent-deep: #a8844a;
-  --accent-soft: rgba(211, 178, 123, 0.12);
+  --text-soft: rgba(245, 246, 248, 0.76);
+  --text-muted: rgba(245, 246, 248, 0.52);
+  --accent: #d1b07a;
+  --accent-2: #f0dfc0;
+  --accent-deep: #9e7a43;
+  --accent-soft: rgba(209, 176, 122, 0.12);
   --white: #ffffff;
-  --shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+  --shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
   --radius: 28px;
   --radius-sm: 18px;
   --container: 1180px;
-  --transition: 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition: 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * {
@@ -26,15 +26,15 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background:
-    radial-gradient(circle at 15% 12%, rgba(211, 178, 123, 0.08), transparent 28%),
-    radial-gradient(circle at 84% 16%, rgba(132, 149, 200, 0.07), transparent 22%),
-    radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.03), transparent 30%),
+    radial-gradient(circle at 14% 10%, rgba(209, 176, 122, 0.07), transparent 28%),
+    radial-gradient(circle at 84% 18%, rgba(132, 149, 200, 0.06), transparent 22%),
     linear-gradient(180deg, #06080d 0%, #090d14 100%);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -49,17 +49,19 @@ body.menu-open {
 body.intro-done .curtain-intro {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 800ms ease, visibility 800ms ease;
+  transition: opacity 700ms ease, visibility 700ms ease;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
   font: inherit;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .page-bg {
@@ -74,80 +76,82 @@ button {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at center, transparent 26%, rgba(0, 0, 0, 0.20) 68%, rgba(0, 0, 0, 0.58) 100%);
+    radial-gradient(circle at center, transparent 28%, rgba(0, 0, 0, 0.16) 68%, rgba(0, 0, 0, 0.52) 100%);
 }
 
 .bg-light {
   position: absolute;
   border-radius: 999px;
-  filter: blur(90px);
-  opacity: 0.38;
+  filter: blur(70px);
+  opacity: 0.28;
+  will-change: transform;
 }
 
 .bg-light-1 {
-  width: 440px;
-  height: 440px;
+  width: 420px;
+  height: 420px;
   top: -120px;
-  left: -80px;
-  background: rgba(211, 178, 123, 0.18);
+  left: -90px;
+  background: rgba(209, 176, 122, 0.18);
 }
 
 .bg-light-2 {
-  width: 380px;
-  height: 380px;
-  right: -90px;
+  width: 320px;
+  height: 320px;
+  right: -80px;
   top: 18%;
-  background: rgba(130, 145, 190, 0.11);
+  background: rgba(135, 149, 193, 0.12);
 }
 
 .bg-light-3 {
-  width: 420px;
-  height: 220px;
-  left: 26%;
-  bottom: -80px;
-  background: rgba(255, 238, 211, 0.08);
+  width: 360px;
+  height: 180px;
+  left: 32%;
+  bottom: -70px;
+  background: rgba(255, 240, 214, 0.08);
 }
 
 .light-sweep {
   position: absolute;
   top: -18%;
   left: -28%;
-  width: 44%;
-  height: 140%;
+  width: 40%;
+  height: 135%;
   transform: rotate(12deg);
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 243, 224, 0.01) 18%,
-    rgba(255, 232, 192, 0.10) 50%,
-    rgba(255, 243, 224, 0.01) 82%,
+    rgba(255, 236, 205, 0.01) 20%,
+    rgba(255, 232, 192, 0.08) 50%,
+    rgba(255, 236, 205, 0.01) 80%,
     transparent 100%
   );
-  filter: blur(10px);
-  animation: lightSweepMove 12s ease-in-out infinite;
-  opacity: 0.55;
+  filter: blur(8px);
+  animation: lightSweepMove 14s ease-in-out infinite;
+  opacity: 0.4;
+  will-change: transform;
 }
 
 @keyframes lightSweepMove {
   0% {
-    transform: translateX(-14%) rotate(12deg);
-    opacity: 0.22;
+    transform: translateX(-10%) rotate(12deg);
+    opacity: 0.18;
   }
   50% {
-    transform: translateX(168%) rotate(12deg);
-    opacity: 0.6;
+    transform: translateX(175%) rotate(12deg);
+    opacity: 0.46;
   }
   100% {
     transform: translateX(320%) rotate(12deg);
-    opacity: 0.18;
+    opacity: 0.12;
   }
 }
 
 .bg-noise {
   position: absolute;
   inset: 0;
-  opacity: 0.05;
-  background-image: radial-gradient(rgba(255,255,255,0.92) 0.55px, transparent 0.6px);
+  opacity: 0.03;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.9) 0.5px, transparent 0.6px);
   background-size: 6px 6px;
   mix-blend-mode: soft-light;
 }
@@ -181,43 +185,43 @@ button {
       rgba(10, 10, 12, 0.98) 100%
     );
   box-shadow:
-    inset 0 0 40px rgba(255,255,255,0.02),
-    inset 0 0 80px rgba(0,0,0,0.42);
+    inset 0 0 30px rgba(255, 255, 255, 0.02),
+    inset 0 0 70px rgba(0, 0, 0, 0.34);
 }
 
 .intro-left {
   left: 0;
-  animation: introCurtainLeft 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: introCurtainLeft 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .intro-right {
   right: 0;
-  animation: introCurtainRight 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: introCurtainRight 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .intro-center-light {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at center, rgba(255, 240, 210, 0.18), transparent 36%),
-    linear-gradient(180deg, rgba(211, 178, 123, 0.10), transparent 48%);
-  animation: introLightFade 1.8s ease forwards;
+    radial-gradient(circle at center, rgba(255, 240, 210, 0.16), transparent 36%),
+    linear-gradient(180deg, rgba(209, 176, 122, 0.08), transparent 48%);
+  animation: introLightFade 1.6s ease forwards;
 }
 
 @keyframes introCurtainLeft {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-102%);
   }
 }
 
 @keyframes introCurtainRight {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(102%);
   }
 }
@@ -246,10 +250,10 @@ button {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 18vw;
-  min-width: 110px;
-  max-width: 280px;
-  opacity: 0.28;
+  width: 16vw;
+  min-width: 90px;
+  max-width: 220px;
+  opacity: 0.2;
   background:
     linear-gradient(
       90deg,
@@ -261,47 +265,24 @@ button {
       rgba(26, 26, 29, 0.86) 70%,
       rgba(8, 8, 10, 0.96) 100%
     );
-  box-shadow:
-    inset -18px 0 24px rgba(255, 255, 255, 0.02),
-    inset 18px 0 28px rgba(0, 0, 0, 0.38);
 }
 
 .curtain-left {
   left: 0;
-  animation: curtainFloatLeft 9s ease-in-out infinite;
 }
 
 .curtain-right {
   right: 0;
-  animation: curtainFloatRight 9s ease-in-out infinite;
 }
 
 .curtain-glow {
   position: absolute;
-  inset: -8% 22% 0;
+  inset: -8% 24% 0;
   background:
-    radial-gradient(circle at center top, rgba(255, 238, 210, 0.10), transparent 48%),
-    linear-gradient(180deg, rgba(211, 178, 123, 0.09), transparent 54%);
-  filter: blur(18px);
-  opacity: 0.72;
-}
-
-@keyframes curtainFloatLeft {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-8px);
-  }
-}
-
-@keyframes curtainFloatRight {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(8px);
-  }
+    radial-gradient(circle at center top, rgba(255, 238, 210, 0.08), transparent 50%),
+    linear-gradient(180deg, rgba(209, 176, 122, 0.06), transparent 54%);
+  filter: blur(16px);
+  opacity: 0.5;
 }
 
 .progress-wrap {
@@ -318,23 +299,23 @@ button {
   width: 0%;
   height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 20px rgba(211, 178, 123, 0.5);
+  box-shadow: 0 0 18px rgba(209, 176, 122, 0.34);
 }
 
 .cursor-glow {
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
-  height: 260px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-  background: radial-gradient(circle, rgba(211, 178, 123, 0.10), transparent 58%);
-  filter: blur(20px);
+  background: radial-gradient(circle, rgba(209, 176, 122, 0.09), transparent 58%);
+  filter: blur(18px);
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 280ms ease;
+  transition: opacity 220ms ease;
 }
 
 .container {
@@ -343,13 +324,13 @@ button {
 }
 
 .section {
-  padding: 80px 0;
+  padding: 84px 0;
 }
 
 .section-alt {
-  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.006));
-  border-top: 1px solid rgba(255,255,255,0.04);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.005));
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .topbar {
@@ -365,11 +346,11 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  border: 1px solid rgba(255,255,255,0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 22px;
   padding: 0 14px;
-  background: rgba(10, 12, 18, 0.6);
-  backdrop-filter: blur(16px);
+  background: rgba(10, 12, 18, 0.56);
+  backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
 }
 
@@ -384,7 +365,7 @@ button {
   height: 14px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 0 6px rgba(211, 178, 123, 0.12);
+  box-shadow: 0 0 0 6px rgba(209, 176, 122, 0.12);
   flex: 0 0 auto;
 }
 
@@ -394,20 +375,20 @@ button {
 }
 
 .brand-text strong {
-  font-size: 0.95rem;
-  letter-spacing: 0.18em;
+  font-size: 0.92rem;
+  letter-spacing: 0.2em;
 }
 
 .brand-text small {
   color: var(--text-muted);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
 }
 
 .menu-toggle {
   width: 48px;
   height: 48px;
   border-radius: 14px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
   display: inline-grid;
   place-items: center;
@@ -434,7 +415,7 @@ button {
   gap: 8px;
   padding: 16px;
   border-radius: 22px;
-  background: rgba(12, 15, 22, 0.95);
+  background: rgba(12, 15, 22, 0.96);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   opacity: 0;
@@ -458,24 +439,25 @@ button {
 
 .nav a:hover,
 .nav a.is-active {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--white);
 }
 
 .nav-cta {
-  background: rgba(211, 178, 123, 0.1);
+  background: rgba(209, 176, 122, 0.1);
   color: var(--accent) !important;
-  border: 1px solid rgba(211, 178, 123, 0.15);
+  border: 1px solid rgba(209, 176, 122, 0.15);
 }
 
 .hero {
-  padding-top: 58px;
-  padding-bottom: 38px;
+  padding-top: 64px;
+  padding-bottom: 42px;
 }
 
 .hero-grid {
   display: grid;
   gap: 30px;
+  align-items: start;
 }
 
 .eyebrow {
@@ -484,22 +466,24 @@ button {
   gap: 8px;
   margin: 0 0 18px;
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .hero-title {
   margin: 0;
-  font-size: clamp(2.45rem, 8vw, 5.35rem);
-  line-height: 0.96;
-  letter-spacing: -0.07em;
-  max-width: 12ch;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.075em;
+  max-width: 11.5ch;
+  text-wrap: balance;
 }
 
 .gold {
   color: var(--accent);
+  text-shadow: 0 0 18px rgba(209, 176, 122, 0.08);
 }
 
 .hero-description,
@@ -518,11 +502,11 @@ button {
 .premium-term p,
 .faq-inner {
   color: var(--text-soft);
-  line-height: 1.74;
+  line-height: 1.72;
 }
 
 .hero-description {
-  max-width: 58ch;
+  max-width: 56ch;
   margin: 22px 0 0;
   font-size: 1rem;
 }
@@ -532,7 +516,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 30px;
 }
 
 .btn {
@@ -543,7 +527,11 @@ button {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
   border: 1px solid transparent;
 }
 
@@ -553,14 +541,14 @@ button {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #131313;
-  box-shadow: 0 18px 40px rgba(211, 178, 123, 0.2);
+  color: #141414;
+  box-shadow: 0 16px 36px rgba(209, 176, 122, 0.18);
 }
 
 .btn-secondary {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--white);
-  border-color: rgba(255,255,255,0.1);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .glass,
@@ -573,12 +561,12 @@ button {
 .investment-stage,
 .faq-item {
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.035)),
-    rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.08);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(10px);
 }
 
 .hero-note {
@@ -602,12 +590,12 @@ button {
 .panel-card::before {
   content: "";
   position: absolute;
-  top: -80px;
+  top: -90px;
   right: -70px;
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(211, 178, 123, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(209, 176, 122, 0.1), transparent 70%);
 }
 
 .panel-head,
@@ -627,20 +615,20 @@ button {
   min-height: 34px;
   padding: 0 12px;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
 }
 
 .panel-tag,
 .pill {
   color: var(--text-soft);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .panel-badge {
   color: var(--accent);
-  background: rgba(211,178,123,0.1);
-  border: 1px solid rgba(211,178,123,0.14);
+  background: rgba(209, 176, 122, 0.1);
+  border: 1px solid rgba(209, 176, 122, 0.14);
 }
 
 .scope-list {
@@ -654,7 +642,7 @@ button {
   grid-template-columns: 52px 1fr;
   gap: 14px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .scope-item:first-child {
@@ -668,8 +656,8 @@ button {
 .timeline-step {
   display: inline-grid;
   place-items: center;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--accent);
 }
 
@@ -690,7 +678,7 @@ button {
 .highlight-band h2,
 .signature-top h2,
 .investment-header h2 {
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
 }
 
 .scope-item strong {
@@ -700,13 +688,14 @@ button {
 
 .section-heading {
   max-width: 840px;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
 }
 
 .section-heading h2 {
   margin: 0 0 14px;
-  font-size: clamp(1.95rem, 5vw, 3.2rem);
-  line-height: 1.06;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.04;
+  text-wrap: balance;
 }
 
 .summary-grid,
@@ -718,14 +707,14 @@ button {
 
 .info-card,
 .tech-card {
-  padding: 24px;
+  padding: 26px;
 }
 
 .info-card h3,
 .page-content h3,
 .tech-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.22rem;
+  margin: 0 0 12px;
+  font-size: 1.2rem;
   line-height: 1.2;
 }
 
@@ -735,7 +724,7 @@ button {
 .investment-mini {
   display: block;
   color: var(--text-muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   margin-bottom: 8px;
 }
 
@@ -748,7 +737,7 @@ button {
 }
 
 .page-card {
-  padding: 22px;
+  padding: 24px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
@@ -759,9 +748,9 @@ button {
   height: 56px;
   border-radius: 18px;
   font-weight: 700;
-  font-size: 1.08rem;
-  background: rgba(211,178,123,0.1);
-  border-color: rgba(211,178,123,0.16);
+  font-size: 1.05rem;
+  background: rgba(209, 176, 122, 0.1);
+  border-color: rgba(209, 176, 122, 0.16);
 }
 
 .page-card ul,
@@ -789,7 +778,7 @@ button {
 }
 
 .technical-panel {
-  padding: 24px;
+  padding: 28px;
   display: grid;
   gap: 24px;
 }
@@ -797,8 +786,8 @@ button {
 .point-card {
   padding: 18px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .point-card strong {
@@ -813,8 +802,8 @@ button {
   gap: 16px;
   padding: 22px;
   border-radius: 24px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .timeline-step {
@@ -822,8 +811,8 @@ button {
   height: 56px;
   border-radius: 18px;
   font-weight: 800;
-  background: rgba(211,178,123,0.1);
-  border-color: rgba(211,178,123,0.16);
+  background: rgba(209, 176, 122, 0.1);
+  border-color: rgba(209, 176, 122, 0.16);
 }
 
 .timeline-item h3 {
@@ -843,8 +832,9 @@ button {
 .investment-header h2,
 .technical-copy h2 {
   margin: 0;
-  font-size: clamp(1.95rem, 5vw, 3.1rem);
-  line-height: 1.05;
+  font-size: clamp(2rem, 5vw, 3.15rem);
+  line-height: 1.03;
+  text-wrap: balance;
 }
 
 .highlight-band h2 span {
@@ -858,17 +848,16 @@ button {
 .investment-stage {
   position: relative;
   overflow: hidden;
-  padding: 32px 24px;
+  padding: 34px 24px;
 }
 
 .investment-aura {
   position: absolute;
-  inset: -18% 12% auto;
-  height: 320px;
-  background:
-    radial-gradient(circle, rgba(211,178,123,0.2), transparent 58%);
-  filter: blur(42px);
-  opacity: 0.9;
+  inset: -18% 14% auto;
+  height: 280px;
+  background: radial-gradient(circle, rgba(209, 176, 122, 0.16), transparent 58%);
+  filter: blur(36px);
+  opacity: 0.85;
   pointer-events: none;
 }
 
@@ -887,22 +876,22 @@ button {
 }
 
 .investment-price-card {
-  padding: 26px;
+  padding: 28px;
   border-radius: 26px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04)),
-    rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+    rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    0 24px 60px rgba(0,0,0,0.28);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 44px rgba(0, 0, 0, 0.22);
 }
 
 .investment-price-card strong {
   display: block;
-  font-size: clamp(2.3rem, 8vw, 4.1rem);
+  font-size: clamp(2.4rem, 8vw, 4rem);
   line-height: 1;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.08em;
   color: var(--accent);
   margin-bottom: 12px;
 }
@@ -916,8 +905,8 @@ button {
   position: relative;
   padding: 22px 22px 22px 28px;
   border-radius: 24px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .term-line {
@@ -932,7 +921,7 @@ button {
 
 .premium-term strong {
   display: block;
-  font-size: 1.14rem;
+  font-size: 1.12rem;
   margin-bottom: 10px;
 }
 
@@ -993,16 +982,16 @@ button {
 .faq-content {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: grid-template-rows 360ms cubic-bezier(0.22, 1, 0.36, 1);
   background:
     repeating-linear-gradient(
       180deg,
-      rgba(255,255,255,0.025) 0px,
-      rgba(255,255,255,0.025) 12px,
-      rgba(255,255,255,0.06) 12px,
-      rgba(255,255,255,0.06) 13px
+      rgba(255, 255, 255, 0.018) 0px,
+      rgba(255, 255, 255, 0.018) 12px,
+      rgba(255, 255, 255, 0.042) 12px,
+      rgba(255, 255, 255, 0.042) 13px
     );
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .faq-item.is-open .faq-content {
@@ -1021,16 +1010,16 @@ button {
 .signature-shell {
   position: relative;
   overflow: hidden;
-  padding: 30px 24px;
+  padding: 32px 24px;
 }
 
 .signature-glow {
   position: absolute;
   inset: -30% 18% auto;
-  height: 260px;
-  background: radial-gradient(circle, rgba(211,178,123,0.18), transparent 60%);
-  filter: blur(40px);
-  opacity: 0.85;
+  height: 240px;
+  background: radial-gradient(circle, rgba(209, 176, 122, 0.14), transparent 60%);
+  filter: blur(36px);
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -1050,13 +1039,13 @@ button {
 .signature-card {
   padding: 20px;
   border-radius: 22px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .signature-card strong {
   display: block;
-  font-size: 1.08rem;
+  font-size: 1.06rem;
 }
 
 .signature-actions {
@@ -1067,10 +1056,10 @@ button {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
   transition:
-    opacity 780ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
@@ -1084,8 +1073,8 @@ button {
   }
 
   .hero {
-    padding-top: 76px;
-    padding-bottom: 48px;
+    padding-top: 78px;
+    padding-bottom: 52px;
   }
 
   .summary-grid,
@@ -1104,7 +1093,7 @@ button {
   }
 
   .investment-stage {
-    padding: 42px 36px;
+    padding: 44px 36px;
   }
 
   .investment-main {
@@ -1153,20 +1142,70 @@ button {
 }
 
 @media (max-width: 767px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section {
+    padding: 72px 0;
+  }
+
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.15rem, 12vw, 3.6rem);
+    line-height: 0.98;
+  }
+
+  .section-heading h2,
+  .highlight-band h2,
+  .signature-top h2,
+  .investment-header h2,
+  .technical-copy h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
   .signature-grid {
     grid-template-columns: 1fr;
   }
 
-  .cursor-glow {
+  .cursor-glow,
+  .bg-noise,
+  .light-sweep {
     display: none;
   }
 
-  .light-sweep {
-    opacity: 0.35;
+  .curtain-layer {
+    display: none;
+  }
+
+  .bg-light {
+    filter: blur(48px);
+    opacity: 0.2;
+  }
+
+  .glass,
+  .info-card,
+  .page-card,
+  .tech-card,
+  .technical-panel,
+  .highlight-band,
+  .signature-shell,
+  .investment-stage,
+  .faq-item,
+  .topbar-inner {
+    backdrop-filter: none;
   }
 
   .intro-panel {
     width: 51%;
+  }
+
+  .progress-wrap {
+    height: 3px;
   }
 }
 
@@ -1189,7 +1228,8 @@ button {
 
   .cursor-glow,
   .curtain-intro,
-  .light-sweep {
+  .light-sweep,
+  .curtain-layer {
     display: none !important;
   }
 }

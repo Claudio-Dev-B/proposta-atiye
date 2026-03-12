@@ -9,12 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const cursorGlow = document.getElementById("cursorGlow");
   const faqItems = document.querySelectorAll(".faq-item");
 
-  // Encerramento visual da intro
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   window.setTimeout(() => {
     body.classList.add("intro-done");
-  }, 1850);
+  }, isMobile ? 1100 : 1650);
 
-  // Menu mobile
   if (menuToggle && nav) {
     menuToggle.addEventListener("click", () => {
       const isOpen = nav.classList.toggle("nav-open");
@@ -42,29 +43,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Reveal
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        obs.unobserve(entry.target);
-      });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: "0px 0px -10% 0px"
-    }
-  );
+  if (!prefersReducedMotion) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: isMobile ? 0.08 : 0.12,
+        rootMargin: "0px 0px -8% 0px"
+      }
+    );
 
-  revealItems.forEach((item, index) => {
-    item.style.transitionDelay = `${Math.min(index * 40, 220)}ms`;
-    observer.observe(item);
-  });
+    revealItems.forEach((item, index) => {
+      item.style.transitionDelay = isMobile
+        ? `${Math.min(index * 18, 90)}ms`
+        : `${Math.min(index * 35, 180)}ms`;
+      observer.observe(item);
+    });
+  } else {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  }
 
-  // Link ativo
   const setActiveLink = () => {
-    const scrollPosition = window.scrollY + 160;
+    const scrollPosition = window.scrollY + (isMobile ? 120 : 160);
 
     sections.forEach((section) => {
       const id = section.getAttribute("id");
@@ -81,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Barra de progresso
   const updateProgressBar = () => {
     if (!progressBar) return;
 
@@ -92,35 +96,41 @@ document.addEventListener("DOMContentLoaded", () => {
     progressBar.style.width = `${Math.min(progress, 100)}%`;
   };
 
-  // Cursor glow
-  if (cursorGlow && window.matchMedia("(min-width: 768px)").matches) {
+  if (cursorGlow && !isMobile && !prefersReducedMotion) {
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let currentX = mouseX;
     let currentY = mouseY;
 
     const renderGlow = () => {
-      currentX += (mouseX - currentX) * 0.14;
-      currentY += (mouseY - currentY) * 0.14;
+      currentX += (mouseX - currentX) * 0.12;
+      currentY += (mouseY - currentY) * 0.12;
 
-      cursorGlow.style.transform = `translate(${currentX - 130}px, ${currentY - 130}px)`;
+      cursorGlow.style.transform = `translate(${currentX - 120}px, ${currentY - 120}px)`;
       requestAnimationFrame(renderGlow);
     };
 
-    window.addEventListener("mousemove", (event) => {
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-      cursorGlow.style.opacity = "1";
-    });
+    window.addEventListener(
+      "mousemove",
+      (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+        cursorGlow.style.opacity = "1";
+      },
+      { passive: true }
+    );
 
-    window.addEventListener("mouseout", () => {
-      cursorGlow.style.opacity = "0";
-    });
+    window.addEventListener(
+      "mouseout",
+      () => {
+        cursorGlow.style.opacity = "0";
+      },
+      { passive: true }
+    );
 
     requestAnimationFrame(renderGlow);
   }
 
-  // FAQ estilo persiana
   faqItems.forEach((item) => {
     const trigger = item.querySelector(".faq-trigger");
 
@@ -142,13 +152,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  let ticking = false;
+
   const handleScrollEffects = () => {
-    setActiveLink();
-    updateProgressBar();
+    if (ticking) return;
+
+    ticking = true;
+
+    requestAnimationFrame(() => {
+      setActiveLink();
+      updateProgressBar();
+      ticking = false;
+    });
   };
 
   window.addEventListener("scroll", handleScrollEffects, { passive: true });
-  window.addEventListener("resize", handleScrollEffects);
+  window.addEventListener("resize", handleScrollEffects, { passive: true });
 
   handleScrollEffects();
 });
